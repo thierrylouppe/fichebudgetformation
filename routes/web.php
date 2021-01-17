@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Action;
+use App\Models\Direction;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/formation', function () {
+    return Direction::with( 'actions', 'actions.etapes', 'actions.etapes.user', 'actions.etapes.livrables')->get();
 });

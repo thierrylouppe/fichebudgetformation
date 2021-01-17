@@ -22,6 +22,10 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function etapes(){
+        return $this->hasMany('App\Models\Etape');
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *
