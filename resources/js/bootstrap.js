@@ -26,3 +26,21 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+try {
+    window.Popper = require('popper.js').default;
+    window.$ = window.jQuery = require('jquery');
+    window.Swal = require('admin-lte/plugins/sweetalert2/sweetalert2.all');
+
+    window.Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000
+    });
+
+    require('bootstrap');
+
+    // AdminLTE code here.
+    require('admin-lte');
+} catch (e) {}

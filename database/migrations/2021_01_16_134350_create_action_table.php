@@ -15,16 +15,14 @@ class CreateActionTable extends Migration
     {
         Schema::create('action', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('direction_id')->constrained("direction");
             $table->string('nom');
             $table->string('objectif');
-            $table->string('budget');
-            $table->string('date_debut');
-            $table->string('date_fin');
+            $table->foreignId('responsable_id')->constrained('users');
             $table->string('impact');
-            $table->foreignId('direction_id')->constrained("direction");
-            $table->timestamps();
+            $table->timestamps(); 
         });
-
+ 
         Schema::enableForeignKeyConstraints();
     }
 
@@ -37,6 +35,7 @@ class CreateActionTable extends Migration
     {
         Schema::table('action', function (Blueprint $table) {
            $table->dropConstrainedForeignId("direction_id");
+           $table->dropConstrainedForeignId("responsable_id");
         });
         
         Schema::dropIfExists('action');

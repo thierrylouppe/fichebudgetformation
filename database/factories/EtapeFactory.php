@@ -25,9 +25,11 @@ class EtapeFactory extends Factory
     {
         return [
             //
-            'libelle' => $this->faker->sentence(1),
+            'livrable_attendus' => $this->faker->sentence(1),
+            'budget' => $this->faker->randomNumber(5, false),
+            'date_debut' => $this->faker->dateTime(),
+            'date_fin' => $this->faker->dateTime(),
             'action_id'=> $this->faker->numberBetween(1, count(Action::all())),
-            'responsable_id'=> $this->faker->numberBetween(1,count(Action::all())),
         ];
     }
 }

@@ -11,13 +11,15 @@ class Action extends Model
 
      protected $table = "action";
 
-     protected $fillable = ["nom", "objectifs", "budget", "date_debut", "date_fin", "impact", "direction_id"];
+     protected $fillable = ["nom", "objectifs",  "impact", "direction_id", "responsable_id"];
+
+     public function user(){
+        return $this->belongsTo('App\Models\User', "responsable_id", "id"); 
+    }
 
      public function direction(){
-         return $this->belongsTo('App\Models\Direction');
+         return $this->belongsTo('App\Models\Direction'); 
      }
 
-     public function etapes(){
-        return $this->hasMany('App\Models\Etape');
-    }
+     
 }

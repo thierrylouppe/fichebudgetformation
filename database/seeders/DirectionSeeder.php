@@ -21,11 +21,15 @@ class DirectionSeeder extends Seeder
     public function run()
     {
         //
+        User::factory()->count(10)->create();
+
+        Direction::factory()->count(5)->create();
+
         Direction::factory()
-        ->hasActions(3)
+        ->hasActions(20)
         ->create();
 
-        User::factory()->count(10)->create();
+        
 
         Etape::factory()->count(10)->create();
 

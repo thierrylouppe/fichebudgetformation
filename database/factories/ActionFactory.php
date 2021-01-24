@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Action;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ActionFactory extends Factory
@@ -25,10 +26,8 @@ class ActionFactory extends Factory
             //'direction_id' => \App\Models\Direction::factory()->create(),
             'nom' => $this->faker->name(),
             'objectif' => $this->faker->sentence(2),
-            'budget' => $this->faker->randomNumber(5, false),
-            'date_debut' => $this->faker->dateTime(),
-            'date_fin' => $this->faker->dateTime(),
-            'impact' => $this->faker->paragraph()
-        ];
+            'impact' => $this->faker->paragraph(),
+            'responsable_id'=> $this->faker->numberBetween(1,count(User::all())),
+        ]; 
     }
 }

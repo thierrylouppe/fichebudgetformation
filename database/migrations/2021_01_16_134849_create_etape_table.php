@@ -15,12 +15,14 @@ class CreateEtapeTable extends Migration
     {
         Schema::create('etape', function (Blueprint $table) {
             $table->id();
-            $table->string('libelle');
             $table->foreignId('action_id')->constrained('action');
-            $table->foreignId('responsable_id')->constrained('users');
+            $table->string('budget');
+            $table->string('date_debut');
+            $table->string('date_fin');
+            $table->string('livrable_attendus');
             $table->timestamps();
         });
-
+ 
         //activation des contraite 
         Schema::enableForeignKeyConstraints();
     }
@@ -34,7 +36,6 @@ class CreateEtapeTable extends Migration
     {
         Schema::table('etape', function (Blueprint $table) {
             $table->dropConstrainedForeignId("action_id");
-            $table->dropConstrainedForeignId("responsable_id");
          });
 
         Schema::dropIfExists('etape');

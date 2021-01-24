@@ -22,8 +22,8 @@ class User extends Authenticatable
         'password',
     ];
 
-    public function etapes(){
-        return $this->hasMany('App\Models\Etape');
+    public function actions(){
+        return $this->hasMany('App\Models\User');
     }
 
     /**
